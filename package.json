@@ -5,14 +5,45 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard 'index.js' 'tasks/**/*.js' 'lib/**/*.js' 'test/**/*.js' | snazzy",
-    "test": "npm run lint",
+    "karma": "karma start test/karma.conf.js",
+    "test": "npm run lint && npm run karma",
+    "test:watch": "npm run karma -- --single-run false",
     "update-vendor": "node tasks/build-vendored-file.js"
   },
   "author": "Blade Barringer <blade@crookedneighbor.com> (http://crookedneighbor.com/)",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^13.0.1",
+    "chai": "^3.5.0",
+    "karma": "^1.1.1",
+    "karma-browserify": "^5.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-mocha": "^1.1.1",
+    "karma-mocha-reporter": "^2.0.4",
+    "mocha": "^2.5.3",
     "request": "^2.73.0",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0",
     "snazzy": "^4.0.0",
-    "standard": "^7.1.2"
+    "standard": "^7.1.2",
+    "watchify": "^3.7.0"
+  },
+  "standard": {
+    "globals": [
+      "after",
+      "afterEach",
+      "before",
+      "beforeEach",
+      "context",
+      "describe",
+      "expect",
+      "it",
+      "xcontext",
+      "xdescribe",
+      "xit"
+    ]
+  },
+  "dependencies": {
+    "bluebird": "^3.4.1"
   }
 }
