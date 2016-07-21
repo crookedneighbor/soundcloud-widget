@@ -1,0 +1,71 @@
+Soundcloud Widget
+===
+
+This is a commonjs wrapper around the [Soundcloud Widget](https://developers.soundcloud.com/docs/api/html5-widget) [JavaScript file](https://w.soundcloud.com/player/api.js) allowing you to require it in your Browserify/Webpack projects.
+
+## Usage
+
+### Initialization
+
+```js
+var SoundcloudWidget = require('soundcloud-widget')
+var iframe = 'id-of-soundcloud-iframe-on-page' // can also pass in an iframe node
+var widget = new SoundcloudWidget(iframe)
+```
+
+### Methods
+
+#### `#on`
+
+A wrapper around the API's `bind` method. `bind` is also exposed if you prefer.
+
+```js
+widget.on(SoundcloudWidget.events.PLAY, function () {
+  // code to run when player starts to play
+})
+
+widget.on === widget.bind // true
+```
+
+See [Events section](#events) for details.
+
+#### `#removeListener`
+
+A wrapper around the API's `unbind` method. `unbind` is also exposed if you prefer.
+
+```js
+widget.on(SoundcloudWidget.events.PLAY, function () {
+  // code to run when player starts to play
+})
+
+widget.on(SoundcloudWidget.events.PLAY, function () {
+  // more code
+})
+
+widget.removeListener(SoundcloudWidget.events.PLAY) // the previous two listeners will no longer run
+
+widget.removeListener === widget.unbind // true
+```
+
+#### All [other methods](https://developers.soundcloud.com/docs/api/html5-widget#methods)
+
+The rest of the methods behave the same as the documentation describes.
+
+### Getters
+
+The [getters in the widget API](https://developers.soundcloud.com/docs/api/html5-widget#getters) take callbacks. All the same methods are provided here, but they are promises instead.
+
+```js
+widget.getVolume().then(function (volume) {
+  // update ui with volume param
+})
+
+widget.getCurrentSound().then(function (soundObject) {
+  // update ui with soundObject
+})
+```
+
+
+### Events
+
+All the [widget's events](https://developers.soundcloud.com/docs/api/html5-widget#events) are stored on `SoundcloudWidget.events`.
