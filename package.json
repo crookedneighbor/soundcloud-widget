@@ -8,7 +8,8 @@
     "karma": "karma start test/karma.conf.js",
     "test": "npm run lint && npm run karma",
     "test:watch": "npm run karma -- --single-run false",
-    "update-vendor": "node tasks/build-vendored-file.js"
+    "update-vendor": "node tasks/build-vendored-file.js",
+    "examples:build": "browserify index.js > examples/bundle.js -s SoundcloudWidget"
   },
   "author": "Blade Barringer <blade@crookedneighbor.com> (http://crookedneighbor.com/)",
   "license": "MIT",

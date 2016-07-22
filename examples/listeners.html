@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Soundcloud Widget Examples: Listeners</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.css" />
+    <style>
+      .ui.container {
+        margin-top: 25px;
+      }
+
+      .ui.segment {
+        max-width: 65%;
+      }
+
+      #listener-output {
+        max-height: 250px;
+        overflow: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui container">
+      <h1>Listeners</h1>
+      <div class="ui left floated segment">
+        <iframe id="soundcloud" width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/4087864&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+        <h1>Logs</h1>
+        <div id="listener-output" class="ui middle aligned divided list"></div>
+      </div>
+      <pre class="ui right floated tertiary segment"><code>
+      var widget = new SoundcloudWidget('soundcloud')
+      var logContainer = document.getElementById('listener-output')
+
+      function generateLogEventFn (event) {
+        return function (data) {
+          var log = document.createElement('p')
+          var text = '&lt;div class="header"&gt; + event + ' was just emitted.&lt;div&gt;
+
+          log.className = 'item'
+          if (data) {
+            text += '&lt;div class="description"&gt;Current Position: ' + data.currentPosition + '&lt;div&gt;
+          }
+          log.innerHTML = text
+
+          logContainer.insertBefore(log, logContainer.firstChild)
+
+          setTimeout(function () {
+            logContainer.removeChild(log)
+          }, 3000)
+        }
+      }
+
+      for (var event in SoundcloudWidget.events) {
+        if (!SoundcloudWidget.events.hasOwnProperty(event)) {
+          continue
+        }
+
+        widget.on(SoundcloudWidget.events[event], generateLogEventFn(event))
+      }
+    </code></pre>
+    </div>
+
+    <script src="./bundle.js"></script>
+    <script>
+      var widget = new SoundcloudWidget('soundcloud')
+      var logContainer = document.getElementById('listener-output')
+
+      function generateLogEventFn (event) {
+        return function (data) {
+          var log = document.createElement('p')
+          var text = '<div class="header">' + event + ' was just emitted.</div>'
+
+          log.className = 'item'
+          if (data) {
+            text += '<div class="description">Current Position: ' + data.currentPosition + '</div>'
+          }
+          log.innerHTML = text
+
+          logContainer.insertBefore(log, logContainer.firstChild)
+
+          setTimeout(function () {
+            logContainer.removeChild(log)
+          }, 3000)
+        }
+      }
+
+      for (var event in SoundcloudWidget.events) {
+        if (!SoundcloudWidget.events.hasOwnProperty(event)) {
+          continue
+        }
+
+        widget.on(SoundcloudWidget.events[event], generateLogEventFn(event))
+      }
+    </script>
+  </body>
+</html>
+
