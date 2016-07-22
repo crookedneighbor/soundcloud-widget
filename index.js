@@ -33,7 +33,7 @@ SoundcloudWidget.prototype.isPaused = applyPromisifiedFunction('isPaused')
 
 function applyFunction (originalName) {
   return function () {
-    this._widget[originalName].apply(this, arguments)
+    this._widget[originalName].apply(this._widget, arguments)
   }
 }
 
