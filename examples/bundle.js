@@ -48,13 +48,11 @@ function applyFunction (originalName) {
 
 function applyPromisifiedFunction (originalName) {
   return function () {
-    var originalFunction = this._widget[originalName]
-
     return new Promise(function (resolve, reject) {
-      originalFunction(function (result) {
+      this._widget[originalName](function (result) {
         resolve(result)
       })
-    })
+    }.bind(this))
   }
 }
 
