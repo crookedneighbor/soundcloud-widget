@@ -12,7 +12,23 @@
     "examples:build": "browserify index.js > examples/bundle.js -s SoundcloudWidget"
   },
   "author": "Blade Barringer <blade@crookedneighbor.com> (http://crookedneighbor.com/)",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/crookedneighbor/soundcloud-widget.git"
+  },
+  "files": [
+    "index.js",
+    "vendor/soundcloud-widget.js"
+  ],
+  "keywords": [
+    "soundcloud",
+    "iframe"
+  ],
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crookedneighbor/soundcloud-widget/issues"
+  },
+  "homepage": "https://github.com/crookedneighbor/soundcloud-widget#readme",
   "devDependencies": {
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
