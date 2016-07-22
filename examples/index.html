@@ -7,20 +7,74 @@
     <style>
       .container {
         margin-top: 25px;
+        margin-bottom: 25px;
+      }
+
+      #install-card {
+        width: 350px;
       }
     </style>
   </head>
   <body>
     <div class="ui container">
-      <h1>Soundcloud Widget Examples</h1>
-      <div class="ui middle aligned divided list">
-        <a class="item" href="listeners.html">Attach Listeners</a>
+      <h1 class="ui center aligned icon header">
+        <i class="soundcloud orange icon"></i>
+        <div class="content">Soundcloud Widget Examples</div>
+      </h1>
+
+      <div class="ui centered cards">
+        <div class="card">
+          <div class="image">
+            <img src="/images/listeners.png">
+          </div>
+          <div class="content">
+            <div class="header">
+              <a href="listeners.html">Attach Listeners</a>
+            </div>
+            <div class="description">
+              Learn how to listen for events emitted by the Soundcloud iframe.
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="/images/player-controls.png">
+          </div>
+          <div class="content">
+            <div class="header">
+              <a href="player-controls.html">Player Controls</a>
+            </div>
+            <div class="description">
+              Control the Soundcloud iframe from outside the iframe.
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="/images/load.png">
+          </div>
+          <div class="content">
+            <div class="header">
+              <a href="load.html">Load a New Sound</a>
+            </div>
+            <div class="description">
+              Load a new track/set dynamically.
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="ui middle aligned divided list">
-        <a class="item" href="load.html">Load a New Track</a>
+
+      <h3 class="ui center aligned icon header">
+        <i class="cloud download icon"></i>
+        <div class="content">Install</div>
+      </h3>
+
+      <div id="install-card" class="ui card centered">
+        <div class="ui message">
+          <pre><code>
+npm install --save soundcloud-widget
+          </code></pre>
       </div>
-      <div class="ui middle aligned divided list">
-        <a class="item" href="player-controls.html">Player Controls</a>
       </div>
     </div>
   </body>
