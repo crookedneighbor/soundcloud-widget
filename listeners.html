@@ -31,40 +31,40 @@
         <div id="listener-output" class="ui middle aligned divided list"></div>
       </div>
       <pre class="ui right floated tertiary segment"><code>
-      var widget = new SoundcloudWidget('soundcloud')
-      var logContainer = document.getElementById('listener-output')
+var widget = new SoundcloudWidget('soundcloud')
+var logContainer = document.getElementById('listener-output')
 
-      function generateLogEventFn (event) {
-        return function (data) {
-          var log = document.createElement('p')
-          var text = '&lt;div class="header"&gt; + event + ' was just emitted.&lt;div&gt;
+function generateLogEventFn (event) {
+  return function (data) {
+    var log = document.createElement('p')
+    var text = '&lt;div class="header"&gt; + event + ' was just emitted.&lt;div&gt;
 
-          log.className = 'item'
-          if (data) {
-            text += '&lt;div class="description"&gt;Current Position: ' + data.currentPosition + '&lt;div&gt;
-          }
-          log.innerHTML = text
+    log.className = 'item'
+    if (data) {
+      text += '&lt;div class="description"&gt;Current Position: ' + data.currentPosition + '&lt;div&gt;
+    }
+    log.innerHTML = text
 
-          logContainer.insertBefore(log, logContainer.firstChild)
+    logContainer.insertBefore(log, logContainer.firstChild)
 
-          setTimeout(function () {
-            logContainer.removeChild(log)
-          }, 3000)
-        }
-      }
+    setTimeout(function () {
+      logContainer.removeChild(log)
+    }, 3000)
+  }
+}
 
-      for (var event in SoundcloudWidget.events) {
-        if (!SoundcloudWidget.events.hasOwnProperty(event)) {
-          continue
-        }
+for (var event in SoundcloudWidget.events) {
+  if (!SoundcloudWidget.events.hasOwnProperty(event)) {
+    continue
+  }
 
-        widget.on(SoundcloudWidget.events[event], generateLogEventFn(event))
-      }
+  widget.on(SoundcloudWidget.events[event], generateLogEventFn(event))
+}
 
-      widget.on(SoundcloudWidget.events.READY, function () {
-        var container = document.getElementById('loader')
-        container.classList.remove('active')
-      })
+widget.on(SoundcloudWidget.events.READY, function () {
+  var container = document.getElementById('loader')
+  container.classList.remove('active')
+})
     </code></pre>
     </div>
 
