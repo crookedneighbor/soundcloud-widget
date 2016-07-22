@@ -9,6 +9,7 @@
     "test": "npm run lint && npm run karma",
     "test:watch": "npm run karma -- --single-run false",
     "update-vendor": "node tasks/build-vendored-file.js",
+    "deploy:docs": "gh-pages -d examples",
     "examples:build": "browserify index.js > examples/bundle.js -s SoundcloudWidget"
   },
   "author": "Blade Barringer <blade@crookedneighbor.com> (http://crookedneighbor.com/)",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
+    "gh-pages": "^0.11.0",
     "karma": "^1.1.1",
     "karma-browserify": "^5.1.0",
     "karma-chrome-launcher": "^1.0.1",
