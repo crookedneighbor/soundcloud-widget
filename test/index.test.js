@@ -95,11 +95,11 @@ describe('SoundcloudWidget', function () {
       var url = 'url'
       var options = {foo: 'bar'}
 
-      this.widget.load(url, options).then(() => {
+      this.widget.load(url, options).then(function () {
         expect(this.widget._widget.load).to.be.calledOnce
         expect(this.widget._widget.load).to.be.calledWith(url, options)
         done()
-      })
+      }.bind(this))
     })
 
     it('is a promise that resolves when loading is complete', function (done) {
@@ -171,11 +171,11 @@ describe('SoundcloudWidget', function () {
 
         expect(promise).to.be.an.instanceOf(Promise)
 
-        promise.then((result) => {
+        promise.then(function (result) {
           expect(result).to.equal(res)
           expect(this.widget._widget[method]).to.be.calledOnce
           done()
-        }).catch(done)
+        }.bind(this)).catch(done)
       })
     })
   })
