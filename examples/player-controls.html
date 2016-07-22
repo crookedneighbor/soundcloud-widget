@@ -23,6 +23,9 @@
     <div class="ui container">
       <h1>Player Controls</h1>
       <div class="ui left floated segment">
+        <div id="loader" class="ui active inverted dimmer">
+          <div class="ui text loader">Loading</div>
+        </div>
         <iframe id="soundcloud" width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/4087864&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
         <div id="controls">
           <div class="ui icon buttons">
@@ -120,6 +123,11 @@
           widget.seekTo(newPosition)
         })
       })
+
+      widget.on(SoundcloudWidget.events.READY, function () {
+        var container = document.getElementById('loader')
+        container.classList.remove('active')
+      })
       </code></pre>
     </div>
 
@@ -196,6 +204,11 @@
 
           widget.seekTo(newPosition)
         })
+      })
+
+      widget.on(SoundcloudWidget.events.READY, function () {
+        var container = document.getElementById('loader')
+        container.classList.remove('active')
       })
     </script>
   </body>
