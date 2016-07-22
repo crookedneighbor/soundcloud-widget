@@ -47,6 +47,35 @@ widget.removeListener(SoundcloudWidget.events.PLAY) // the previous two listener
 widget.removeListener === widget.unbind // true
 ```
 
+#### `#load`
+
+A wrapper around the API's `load` method. Instead of passing a callback parameter in the options hash, the function returns a promise. Use that to determine when the song has been loaded.
+
+```js
+widget.load('some soundcloud url')
+widget.load('some soundcloud url').then(function () {
+  // sound has been loaded
+})
+
+var options = { // default values displayed
+  auto_play: false,
+  buying: true,
+  liking: true,
+  download: true,
+  sharing: true,
+  show_artwork: true,
+  show_comments: true,
+  show_playcount: true,
+  show_user: true,
+  start_track: 0 // for playlists
+}
+
+widget.load('some soundcloud url', options)
+widget.load('some soundcloud url', options).then(function () {
+  // sound has been loaded
+})
+```
+
 #### All [other methods](https://developers.soundcloud.com/docs/api/html5-widget#methods)
 
 The rest of the methods behave the same as the documentation describes.

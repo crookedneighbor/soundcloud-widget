@@ -83,9 +83,47 @@ describe('SoundcloudWidget', function () {
     })
   })
 
+  describe('#load', function () {
+    beforeEach(function () {
+      this.widget = new SoundcloudWidget(this.iframe)
+      this.sandbox.stub(this.widget._widget, 'load', function (url, options) {
+        options.callback()
+      })
+    })
+
+    it('outsources to scWidget\'s load', function (done) {
+      var url = 'url'
+      var options = {foo: 'bar'}
+
+      this.widget.load(url, options).then(() => {
+        expect(this.widget._widget.load).to.be.calledOnce
+        expect(this.widget._widget.load).to.be.calledWith(url, options)
+        done()
+      })
+    })
+
+    it('is a promise that resolves when loading is complete', function (done) {
+      var url = 'url'
+      var options = {foo: 'bar'}
+
+      var promise = this.widget.load(url, options)
+
+      expect(promise).to.be.an.instanceOf(Promise)
+
+      promise.then(done)
+    })
+
+    it('does not require an options argument', function (done) {
+      var url = 'url'
+
+      var promise = this.widget.load(url)
+
+      promise.then(done)
+    })
+  })
+
   describe('scWidget passthrough methods', function () {
     var methods = [
-      'load',
       'play',
       'pause',
       'toggle',

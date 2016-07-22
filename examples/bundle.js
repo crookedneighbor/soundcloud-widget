@@ -10,11 +10,19 @@ function SoundcloudWidget (iframe) {
 
 SoundcloudWidget.events = widget.Events
 
+SoundcloudWidget.prototype.load = function (url, options) {
+  return new Promise(function (resolve) {
+    options = options || {}
+    options.callback = resolve
+
+    this._widget.load(url, options)
+  }.bind(this))
+}
+
 SoundcloudWidget.prototype.on = applyFunction('bind')
 SoundcloudWidget.prototype.bind = SoundcloudWidget.prototype.on
 SoundcloudWidget.prototype.removeListener = applyFunction('unbind')
 SoundcloudWidget.prototype.unbind = SoundcloudWidget.prototype.removeListener
-SoundcloudWidget.prototype.load = applyFunction('load')
 SoundcloudWidget.prototype.play = applyFunction('play')
 SoundcloudWidget.prototype.pause = applyFunction('pause')
 SoundcloudWidget.prototype.toggle = applyFunction('toggle')
