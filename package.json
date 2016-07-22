@@ -4,7 +4,7 @@
   "description": "A wrapper around the Soundcloud widget js.",
   "main": "index.js",
   "scripts": {
-    "lint": "standard 'index.js' 'tasks/**/*.js' 'lib/**/*.js' 'test/**/*.js' | snazzy",
+    "lint": "standard 'index.js' 'tasks/**/*.js' 'test/**/*.js' | snazzy",
     "karma": "karma start test/karma.conf.js",
     "test": "npm run lint && npm run karma",
     "test:watch": "npm run karma -- --single-run false",
