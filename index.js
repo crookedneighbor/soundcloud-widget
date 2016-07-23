@@ -23,6 +23,15 @@ var WIDGET_METHODS_WITH_CALLBACKS = Object.freeze([
   'isPaused'
 ])
 
+var LOAD_PARAM_MAPPING = Object.freeze({
+  autoPlay: 'auto_play',
+  showArtwork: 'show_artwork',
+  showComments: 'show_comments',
+  showPlaycount: 'show_playcount',
+  showUser: 'show_user',
+  startTrack: 'start_track'
+})
+
 function SoundcloudWidget (iframe) {
   this._widget = widget(iframe)
 }
@@ -33,6 +42,8 @@ SoundcloudWidget.prototype.load = function (url, options) {
   return new Promise(function (resolve) {
     options = options || {}
     options.callback = resolve
+
+    convertCamelCaseParamsToSnakeCase(options)
 
     this._widget.load(url, options)
   }.bind(this))
@@ -64,6 +75,19 @@ function applyPromisifiedFunction (originalName) {
         resolve(result)
       })
     }.bind(this))
+  }
+}
+
+function convertCamelCaseParamsToSnakeCase (options) {
+  for (var param in LOAD_PARAM_MAPPING) {
+    if (!LOAD_PARAM_MAPPING.hasOwnProperty(param)) {
+      continue
+    }
+
+    if (options[param] != null) {
+      var mapping = LOAD_PARAM_MAPPING[param]
+      options[mapping] = options[param]
+    }
   }
 }
 

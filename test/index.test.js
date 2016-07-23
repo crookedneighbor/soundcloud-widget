@@ -91,14 +91,13 @@ describe('SoundcloudWidget', function () {
       })
     })
 
-    it('outsources to scWidget\'s load', function (done) {
+    it('outsources to scWidget\'s load', function () {
       var url = 'url'
       var options = {foo: 'bar'}
 
-      this.widget.load(url, options).then(function () {
+      return this.widget.load(url, options).then(function () {
         expect(this.widget._widget.load).to.be.calledOnce
         expect(this.widget._widget.load).to.be.calledWith(url, options)
-        done()
       }.bind(this))
     })
 
@@ -119,6 +118,45 @@ describe('SoundcloudWidget', function () {
       var promise = this.widget.load(url)
 
       promise.then(done)
+    })
+
+    it('takes camel case versions of the optiions params', function () {
+      var url = 'url'
+      var options = {
+        autoPlay: false,
+        showArtwork: false,
+        showComments: true,
+        showPlaycount: true,
+        showUser: false,
+        startTrack: 10
+      }
+
+      return this.widget.load(url, options).then(function () {
+        expect(this.widget._widget.load).to.be.calledOnce
+        expect(this.widget._widget.load).to.be.calledWith(url, this.sandbox.match({
+          auto_play: false,
+          show_artwork: false,
+          show_comments: true,
+          show_playcount: true,
+          show_user: false,
+          start_track: 10,
+        }))
+      }.bind(this))
+    })
+
+    it('prefers camel case property over snake case if both are passed', function () {
+      var url = 'url'
+      var options = {
+        start_track: 5,
+        startTrack: 10
+      }
+
+      return this.widget.load(url, options).then(function () {
+        expect(this.widget._widget.load).to.be.calledOnce
+        expect(this.widget._widget.load).to.be.calledWith(url, this.sandbox.match({
+          start_track: 10,
+        }))
+      }.bind(this))
     })
   })
 

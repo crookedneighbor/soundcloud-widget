@@ -78,6 +78,21 @@ widget.load('some soundcloud url', options).then(function () {
 })
 ```
 
+If your code style prefers camel case parameters, you can pass in camel case versions of the snake case parameters instead.
+
+```js
+var options = {
+  autoPlay: false,
+  showArtwork: true,
+  showComments: true,
+  showPlaycount: true,
+  showUser: true,
+  startTrack: 0
+}
+
+widget.load('some soundcloud url', options)
+```
+
 #### All [other methods](https://developers.soundcloud.com/docs/api/html5-widget#methods)
 
 The rest of the methods behave the same as the documentation describes.
