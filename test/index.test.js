@@ -139,7 +139,7 @@ describe('SoundcloudWidget', function () {
           show_comments: true,
           show_playcount: true,
           show_user: false,
-          start_track: 10,
+          start_track: 10
         }))
       }.bind(this))
     })
@@ -154,7 +154,7 @@ describe('SoundcloudWidget', function () {
       return this.widget.load(url, options).then(function () {
         expect(this.widget._widget.load).to.be.calledOnce
         expect(this.widget._widget.load).to.be.calledWith(url, this.sandbox.match({
-          start_track: 10,
+          start_track: 10
         }))
       }.bind(this))
     })
