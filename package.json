@@ -44,7 +44,7 @@
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
     "snazzy": "^4.0.0",
-    "standard": "^7.1.2",
+    "standard": "^8.0.0",
     "watchify": "^3.7.0"
   },
   "standard": {
