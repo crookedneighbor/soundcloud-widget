@@ -53,7 +53,7 @@ describe('SoundcloudWidget', function () {
 
       this.widget.on(event, callback)
 
-      expect(this.widget._widget.bind).to.be.calledOnce
+      expect(this.widget._widget.bind).to.be.calledOnce // eslint-disable-line
       expect(this.widget._widget.bind).to.be.calledWith(event, callback)
     })
 
@@ -74,7 +74,7 @@ describe('SoundcloudWidget', function () {
 
       this.widget.removeListener(event)
 
-      expect(this.widget._widget.unbind).to.be.calledOnce
+      expect(this.widget._widget.unbind).to.be.calledOnce // eslint-disable-line
       expect(this.widget._widget.unbind).to.be.calledWith(event)
     })
 
@@ -96,7 +96,7 @@ describe('SoundcloudWidget', function () {
       var options = {foo: 'bar'}
 
       return this.widget.load(url, options).then(function () {
-        expect(this.widget._widget.load).to.be.calledOnce
+        expect(this.widget._widget.load).to.be.calledOnce // eslint-disable-line
         expect(this.widget._widget.load).to.be.calledWith(url, options)
       }.bind(this))
     })
@@ -132,7 +132,7 @@ describe('SoundcloudWidget', function () {
       }
 
       return this.widget.load(url, options).then(function () {
-        expect(this.widget._widget.load).to.be.calledOnce
+        expect(this.widget._widget.load).to.be.calledOnce // eslint-disable-line
         expect(this.widget._widget.load).to.be.calledWith(url, this.sandbox.match({
           auto_play: false,
           show_artwork: false,
@@ -152,7 +152,7 @@ describe('SoundcloudWidget', function () {
       }
 
       return this.widget.load(url, options).then(function () {
-        expect(this.widget._widget.load).to.be.calledOnce
+        expect(this.widget._widget.load).to.be.calledOnce // eslint-disable-line
         expect(this.widget._widget.load).to.be.calledWith(url, this.sandbox.match({
           start_track: 10
         }))
@@ -181,7 +181,7 @@ describe('SoundcloudWidget', function () {
 
         this.widget[method](arg)
 
-        expect(this.widget._widget[method]).to.be.calledOnce
+        expect(this.widget._widget[method]).to.be.calledOnce // eslint-disable-line
         expect(this.widget._widget[method]).to.be.calledWith(arg)
       })
     })
@@ -211,7 +211,7 @@ describe('SoundcloudWidget', function () {
 
         promise.then(function (result) {
           expect(result).to.equal(res)
-          expect(this.widget._widget[method]).to.be.calledOnce
+          expect(this.widget._widget[method]).to.be.calledOnce // eslint-disable-line
           done()
         }.bind(this)).catch(done)
       })
