@@ -1,6 +1,8 @@
 Soundcloud Widget
 ===
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/crookedneighbor/soundcloud-widget.svg)](https://greenkeeper.io/)
+
 This is a commonjs wrapper around the [Soundcloud Widget](https://developers.soundcloud.com/docs/api/html5-widget) [JavaScript file](https://w.soundcloud.com/player/api.js) allowing you to require it in your Browserify/Webpack projects.
 
 For some examples, [go here](https://crookedneighbor.github.io/soundcloud-widget).
