@@ -86,7 +86,7 @@ describe('SoundcloudWidget', function () {
   describe('#load', function () {
     beforeEach(function () {
       this.widget = new SoundcloudWidget(this.iframe)
-      this.sandbox.stub(this.widget._widget, 'load', function (url, options) {
+      this.sandbox.stub(this.widget._widget, 'load').callsFake(function (url, options) {
         options.callback()
       })
     })
