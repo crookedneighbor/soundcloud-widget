@@ -34,7 +34,7 @@
     "browserify": "^14.1.0",
     "chai": "^4.1.0",
     "gh-pages": "^1.0.0",
-    "karma": "^1.1.1",
+    "karma": "^2.0.0",
     "karma-browserify": "^5.1.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-mocha": "^1.1.1",
