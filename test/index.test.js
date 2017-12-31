@@ -1,6 +1,5 @@
 var SoundcloudWidget = require('../')
 var scWidget = require('../vendor/soundcloud-widget')
-var Promise = require('bluebird')
 
 describe('SoundcloudWidget', function () {
   beforeEach(function () {
@@ -105,11 +104,7 @@ describe('SoundcloudWidget', function () {
       var url = 'url'
       var options = {foo: 'bar'}
 
-      var promise = this.widget.load(url, options)
-
-      expect(promise).to.be.an.instanceOf(Promise)
-
-      promise.then(done)
+      this.widget.load(url, options).then(done)
     })
 
     it('does not require an options argument', function (done) {
@@ -206,8 +201,6 @@ describe('SoundcloudWidget', function () {
         this.sandbox.stub(this.widget._widget, method).yields(res)
 
         var promise = this.widget[method]()
-
-        expect(promise).to.be.an.instanceOf(Promise)
 
         promise.then(function (result) {
           expect(result).to.equal(res)

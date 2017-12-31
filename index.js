@@ -1,6 +1,6 @@
 'use strict'
 
-var Promise = require('bluebird')
+var Promise = global.Promise || require('promise-polyfill')
 var widget = require('./vendor/soundcloud-widget')
 
 var WIDGET_METHODS = Object.freeze([

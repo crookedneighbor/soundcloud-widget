@@ -63,6 +63,6 @@
     ]
   },
   "dependencies": {
-    "bluebird": "^3.4.1"
+    "promise-polyfill": "^7.0.0"
   }
 }
