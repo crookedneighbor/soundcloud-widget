@@ -63,6 +63,6 @@
     ]
   },
   "dependencies": {
-    "promise-polyfill": "^7.0.0"
+    "promise-polyfill": "^8.0.0"
   }
 }
