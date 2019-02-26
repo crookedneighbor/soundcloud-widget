@@ -6,7 +6,7 @@ chai.use(require('sinon-chai'))
 global.expect = chai.expect
 
 before(function () {
-  this.sandbox = sinon.sandbox.create()
+  this.sandbox = sinon.createSandbox()
 })
 
 afterEach(function () {

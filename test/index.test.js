@@ -92,7 +92,7 @@ describe('SoundcloudWidget', function () {
 
     it('outsources to scWidget\'s load', function () {
       var url = 'url'
-      var options = {foo: 'bar'}
+      var options = { foo: 'bar' }
 
       return this.widget.load(url, options).then(function () {
         expect(this.widget._widget.load).to.be.calledOnce // eslint-disable-line
@@ -102,7 +102,7 @@ describe('SoundcloudWidget', function () {
 
     it('is a promise that resolves when loading is complete', function (done) {
       var url = 'url'
-      var options = {foo: 'bar'}
+      var options = { foo: 'bar' }
 
       this.widget.load(url, options).then(done)
     })
@@ -172,7 +172,7 @@ describe('SoundcloudWidget', function () {
         this.widget = new SoundcloudWidget(this.iframe)
         this.sandbox.stub(this.widget._widget, method)
 
-        var arg = {value: 'arg'}
+        var arg = { value: 'arg' }
 
         this.widget[method](arg)
 
@@ -195,7 +195,7 @@ describe('SoundcloudWidget', function () {
 
     methods.forEach(function (method) {
       it('promisifies scWidget\'s ' + method, function (done) {
-        var res = {value: 'foo'}
+        var res = { value: 'foo' }
 
         this.widget = new SoundcloudWidget(this.iframe)
         this.sandbox.stub(this.widget._widget, method).yields(res)
